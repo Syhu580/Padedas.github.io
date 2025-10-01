@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=https://www.padedas.store">
+  <script>
+    // Redirect semua request tanpa www ke www.padedas.store
+    if (location.hostname === "padedas.store") {
+      location.replace("https://www.padedas.store" + location.pathname + location.search + location.hash);
+    }
+  </script>
+  <title>Redirecting...</title>
+</head>
+<body>
+  <p>Redirecting to <a href="https://www.padedas.store">www.padedas.store</a>...</p>
+</body>
+</html>
