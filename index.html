@@ -1,122 +1,870 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <link rel="icon" href="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/main/favicon.ico" type="image/x-icon">
-  <link rel="shortcut icon" href="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/main/favicon.ico" type="image/x-icon">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Padedas - Kulit Bayi Putih, Sehat & Percaya Diri Sejak Dini</title>
+    <meta charset="UTF-8">
+    <link rel="icon" href="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/main/favicon.ico" type="image/x-icon">
+<link rel="shortcut icon" href="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/main/favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padedas - Kulit Bayi Putih, Sehat & Percaya Diri Sejak Dini</title>
+    <style>
+        /* Reset dan variabel */
+        :root {
+            --primary: #4a9d8c;
+            --primary-light: #6bb7a7;
+            --secondary: #f8f9fa;
+            --accent: #ffd166;
+            --text: #333333;
+            --text-light: #666666;
+            --white: #ffffff;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        section {
+            padding: 80px 0;
+        }
+        
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            color: var(--primary);
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+        }
+        
+        p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+        
+        .btn {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: var(--shadow);
+        }
+        
+        .btn:hover {
+            background-color: var(--primary-light);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .btn-accent {
+            background-color: var(--accent);
+            color: var(--text);
+        }
+        
+        .btn-accent:hover {
+            background-color: #ffdc8a;
+        }
+        
+        /* Header */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            padding: 150px 0 80px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 20px;
+            color: var(--primary);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--text);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        /* Slider Styles */
+        .slider-container {
+            position: relative;
+            max-width: 1000px;
+            margin: 0 auto;
+            overflow: hidden;
+            border-radius: 10px;
+            box-shadow: var(--shadow);
+        }
+        
+        .slider {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        
+        .slide {
+            min-width: 100%;
+            position: relative;
+        }
+        
+        .slide img {
+            width: 100%;
+            height: auto;
+            display: block;
+            cursor: pointer;
+        }
+        
+        .slider-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 10;
+            transition: all 0.3s ease;
+        }
+        
+        .slider-btn:hover {
+            background-color: var(--white);
+        }
+        
+        .prev {
+            left: 15px;
+        }
+        
+        .next {
+            right: 15px;
+        }
+        
+        .slider-dots {
+            display: flex;
+            justify-content: center;
+            margin-top: 15px;
+        }
+        
+        .dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        
+        .dot.active {
+            background-color: var(--primary);
+        }
+        
+        /* Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .lightbox img {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 5px;
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
+            z-index: 2001;
+        }
+        
+        /* Section Styles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        
+        .benefit-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            transition: transform 0.3s ease;
+        }
+        
+        .benefit-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .benefit-card h3 {
+            display: flex;
+            align-items: center;
+            color: var(--primary);
+        }
+        
+        .benefit-card h3:before {
+            content: "✓";
+            background-color: var(--primary-light);
+            color: var(--white);
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+        }
+        
+        /* Testimonial */
+        .testimonial {
+            background-color: var(--secondary);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+        
+        .testimonial:before {
+            content: """;
+            font-size: 80px;
+            color: var(--primary-light);
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            opacity: 0.3;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            margin-top: 20px;
+            color: var(--primary);
+        }
+        
+        /* Features */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .feature {
+            text-align: center;
+            padding: 20px;
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        /* CTA Section */
+        .cta {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-light) 100%);
+            color: var(--white);
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .cta h2 {
+            color: var(--white);
+        }
+        
+        .cta p {
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 30px;
+        }
+        
+        .price {
+            font-size: 3rem;
+            font-weight: 700;
+            margin: 20px 0;
+        }
+        
+        .guarantee {
+            display: inline-block;
+            background-color: rgba(255, 255, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 30px;
+            margin: 20px 0;
+        }
+        
+        /* Footer */
+        footer {
+            background-color: var(--text);
+            color: var(--white);
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+        
+        footer p {
+            color: rgba(255, 255, 255, 0.7);
+        }
+        
+        .copyright {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.7rem;
+            }
+            
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .slider-btn {
+                width: 30px;
+                height: 30px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-720761428">
+</script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  <!-- ✅ Schema Markup Bintang Rating (Structured Data) -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    "name": "Padedas Herbal Baby Lotion",
-    "image": "https://raw.githubusercontent.com/Syhu580/Padedas.github.io/main/free%20premium%20(1).png",
-    "description": "Lotion herbal alami untuk mencerahkan kulit bayi secara aman tanpa efek samping.",
-    "brand": {
-      "@type": "Brand",
-      "name": "Padedas"
-    },
-    "sku": "PAD-BABY-001",
-    "offers": {
-      "@type": "Offer",
-      "url": "https://padedas.store",
-      "priceCurrency": "IDR",
-      "price": "150000",
-      "availability": "https://schema.org/InStock"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "287"
-    }
-  }
-  </script>
-
-  <!-- ✅ Verifikasi Google -->
-  <meta name="google-site-verification" content="YTvwHPsEV8XqDfXlU5bYwJbsRTIv9zYIdmaJQJNqDxI" />
-
-  <!-- ✅ Google Tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-720761428"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'AW-720761428');
-  </script>
-
-  <style>
-    /* Semua CSS original tetap sama */
-    :root {
-        --primary: #4a9d8c;
-        --primary-light: #6bb7a7;
-        --secondary: #f8f9fa;
-        --accent: #ffd166;
-        --text: #333333;
-        --text-light: #666666;
-        --white: #ffffff;
-        --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    }
-    * {margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',Tahoma,Geneva,Verdana,sans-serif;}
-    body {color:var(--text);line-height:1.6;background-color:var(--white);}
-    .container {max-width:1200px;margin:0 auto;padding:0 20px;}
-    section {padding:80px 0;}
-    h1,h2,h3 {margin-bottom:20px;line-height:1.3;}
-    h1{font-size:2.5rem;} h2{font-size:2rem;color:var(--primary);} h3{font-size:1.5rem;}
-    p{margin-bottom:15px;color:var(--text-light);}
-    .btn{display:inline-block;background-color:var(--primary);color:var(--white);padding:12px 30px;border-radius:30px;text-decoration:none;font-weight:600;transition:all 0.3s ease;border:none;cursor:pointer;box-shadow:var(--shadow);}
-    .btn:hover{background-color:var(--primary-light);transform:translateY(-2px);box-shadow:0 6px 12px rgba(0,0,0,0.15);}
-    .btn-accent{background-color:var(--accent);color:var(--text);}
-    .btn-accent:hover{background-color:#ffdc8a;}
-    header{background-color:var(--white);box-shadow:var(--shadow);position:fixed;width:100%;top:0;z-index:1000;}
-    .navbar{display:flex;justify-content:space-between;align-items:center;padding:20px 0;}
-    .logo{font-size:1.8rem;font-weight:700;color:var(--primary);}
-    .hero{background:linear-gradient(135deg,#f5f7fa 0%,#e4edf5 100%);padding:150px 0 80px;text-align:center;}
-    .hero h1{font-size:2.8rem;margin-bottom:20px;color:var(--primary);}
-    .hero p{font-size:1.2rem;max-width:700px;margin:0 auto 30px;}
-    .badge{display:inline-block;background-color:var(--accent);color:var(--text);padding:5px 15px;border-radius:20px;font-size:0.9rem;margin-bottom:20px;font-weight:600;}
-    /* dan seterusnya: semua CSS original tetap */
-  </style>
+  gtag('config', 'AW-720761428');
+</script>
+<meta name="google-site-verification" content="YTvwHPsEV8XqDfXlU5bYwJbsRTIv9zYIdmaJQJNqDxI" />
 </head>
-
 <body>
-  <!-- Konten asli kamu -->
-  <header>
-    <div class="container">
-      <nav class="navbar">
-        <div class="logo">Padedas</div>
-        <a href="https://wa.me/+6285337623560?text=Hai bunda saya mau pesan padedas" class="btn">Pesan Sekarang</a>
-      </nav>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo">Padedas</div>
+                <a href="https://wa.me/+6285337623560?text=Hai bunda saya mau pesan padedas" class="btn">Pesan Sekarang</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <span class="badge">✨ Formula 100% herbal</span>
+            <h1>Kulit Bayi Putih, Sehat & Percaya Diri Sejak Dini</h1>
+            <p>Formula 100% herbal – lembut untuk kulit bayi, cepat terlihat hasilnya dalam 2 minggu.</p>
+            <a href="https://wa.me/+6285337623560?text=Hai bunda saya mau pesan padedas" class="btn btn-accent">Pesan Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Product Slider Section -->
+    <section id="product-slider">
+        <div class="container">
+            <div class="section-title">
+                <h2>Produk Padedas</h2>
+                <p>Lihat kemasan dan isi produk kami</p>
+            </div>
+            <div class="slider-container">
+                <div class="slider" id="productSlider">
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/free%20premium%20(1).png" alt="Kemasan Padedas 1">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/1758905526625.jpg" alt="Kemasan Padedas 2">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Padedas_3resize%5B1pshop%5D.png" alt="Isi Produk Padedas">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Gemini_Generated_Image_vj8w6vj8w6vj8w6v_transformed.png" alt="Produk Dalam Penggunaan">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/1758873906310.jpg" alt="Produk Dalam Penggunaan">
+                    </div>
+                </div>
+                <button class="slider-btn prev" onclick="moveSlide('productSlider', -1)">&#10094;</button>
+                <button class="slider-btn next" onclick="moveSlide('productSlider', 1)">&#10095;</button>
+            </div>
+            <div class="slider-dots" id="productDots"></div>
+        </div>
+    </section>
+
+    <!-- Survival Needs Section -->
+    <section id="survival">
+        <div class="container">
+            <div class="section-title">
+                <h2>Keamanan & Kesehatan Bayi</h2>
+            </div>
+            <div class="benefit-card">
+                <h3>Formula 100% Herbal</h3>
+                <p>Setiap ibu ingin memastikan buah hatinya tumbuh sehat dan aman. Padedas hadir dengan formula 100% herbal – tanpa bahan kimia berbahaya – sehingga kulit bayi tetap lembut, sehat, dan terlindungi sejak dini.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Identitas & Norma Sosial Section -->
+    <section id="identity" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Identitas & Norma Sosial</h2>
+            </div>
+            <div class="benefit-card">
+                <h3>Lindungi Buah Hati dari Komentar Negatif</h3>
+                <p>Di masyarakat kita, seringkali warna kulit bayi menjadi bahan komentar. "Kenapa kulit anaknya hitam ya?" "Sayang banget, masih bayi tapi kusam begitu." Komentar seperti ini bisa bikin hati seorang ibu perih.</p>
+                <p>Padedas membantu buah hati tampil dengan kulit lebih cerah, sehat, dan diterima di lingkungan sosial—tanpa rasa minder, tanpa khawatir.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Motivasi Intrinsik Section -->
+    <section id="motivation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tujuan & Makna</h2>
+            </div>
+            <div class="benefit-card">
+                <h3>Investasi untuk Masa Depan Buah Hati</h3>
+                <p>Setiap orang tua ingin memberikan masa depan terbaik bagi anaknya. Bayangkan si kecil tumbuh dengan percaya diri, berani bergaul, dan tidak dihantui rasa minder karena penampilan kulitnya.</p>
+                <p>Padedas bukan sekadar produk—ia adalah investasi untuk masa depan buah hati.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Profit / Benefit Finansial Section -->
+    <section id="profit" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hemat & Efektif</h2>
+            </div>
+            <div class="benefit-card">
+                <h3>Solusi Hemat untuk Hasil Besar</h3>
+                <p>Dengan harga hanya Rp150.000 per paket, Padedas adalah solusi hemat untuk hasil besar:</p>
+                <ul style="list-style-type: none; padding-left: 20px;">
+                    <li style="margin-bottom: 10px;">✓ Tidak perlu perawatan mahal ke klinik</li>
+                    <li style="margin-bottom: 10px;">✓ Tidak perlu beli produk berlapis-lapis</li>
+                    <li style="margin-bottom: 10px;">✓ Hanya satu solusi, hasil nyata</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reputasi & Legitimasi Sosial Section -->
+    <section id="reputation">
+        <div class="container">
+            <div class="section-title">
+                <h2>Testimoni Ibu Indonesia</h2>
+            </div>
+            <div class="testimonial">
+                <p>"Anak saya cerah dalam 2 minggu, hasil permanen sampai usia 4 tahun."</p>
+                <p class="testimonial-author">– Ibu Sarah, Jakarta</p>
+            </div>
+            <div class="testimonial">
+                <p>"Sekarang saya tidak khawatir lagi dengan komentar orang."</p>
+                <p class="testimonial-author">– Ibu Dewi, Surabaya</p>
+            </div>
+            <p style="text-align: center; margin-top: 30px; font-weight: 600;">Buktinya nyata. Reputasi kami sudah teruji.</p>
+        </div>
+    </section>
+
+    <!-- Testimonial Slider Section -->
+    <section id="testimonial-slider" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Foto Testimoni Pengguna Padedas</h2>
+                <p>Lihat hasil nyata penggunaan Padedas</p>
+            </div>
+            <div class="slider-container">
+                <div class="slider" id="testimonialSlider">
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756322968337.png" alt="Hasil Setelah 2 Minggu">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756323141912.png" alt="Hasil Setelah 2 Minggu">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756296192883.png" alt="Hasil Setelah 2 Minggu">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756323139730.png" alt="Hasil Setelah 2 Minggu">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756308888549.png" alt="Perbandingan Sebelum dan Sesudah">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756308999926.png" alt="Bayi Dengan Kulit Sehat">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756309121669.png" alt="Testimoni Ibu Sarah">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756309269101.png" alt="Testimoni Ibu Dewi">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756308888549.png" alt="Perbandingan Sebelum dan Sesudah">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756309269885.png" alt="Perbandingan Sebelum dan Sesudah">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756309270403.png" alt="Perbandingan Sebelum dan Sesudah">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756322964818.png" alt="Perbandingan Sebelum dan Sesudah">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756322966560.png" alt="Perbandingan Sebelum dan Sesudah">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756322967788.png" alt="Perbandingan Sebelum dan Sesudah">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756323137699.png" alt="Perbandingan Sebelum dan Sesudah">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756323353424.png" alt="Perbandingan Sebelum dan Sesudah">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756323354176.png" alt="Perbandingan Sebelum dan Sesudah">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756323354799.png" alt="Perbandingan Sebelum dan Sesudah">
+                    </div>
+                    <div class="slide">
+                        <img src="https://raw.githubusercontent.com/Syhu580/Padedas.github.io/refs/heads/main/Photo_1756323494487.png" alt="Perbandingan Sebelum dan Sesudah">
+                    </div>
+                </div>
+                <button class="slider-btn prev" onclick="moveSlide('testimonialSlider', -1)">&#10094;</button>
+                <button class="slider-btn next" onclick="moveSlide('testimonialSlider', 1)">&#10095;</button>
+            </div>
+            <div class="slider-dots" id="testimonialDots"></div>
+        </div>
+    </section>
+
+    <!-- Institusi & Aturan Kolektif Section -->
+    <section id="institution" style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Keamanan & Standar</h2>
+            </div>
+            <div class="benefit-card">
+                <h3>Produk Terjamin & Terpercaya</h3>
+                <p>Produk ini sudah melalui uji keamanan berbasis herbal, diproduksi sesuai standar, dan dikirim dengan packaging rapi serta aman ke seluruh Indonesia.</p>
+                <div class="guarantee">🛡️ Garansi 100% Aman</div>
+                <p>Karena kami tahu ibu hanya mau yang terbaik untuk bayinya.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Emosi & Bias Kognitif Section -->
+    <section id="emotion">
+        <div class="container">
+            <div class="section-title">
+                <h2>Wujudkan Impian Ibu</h2>
+            </div>
+            <div class="benefit-card">
+                <h3>Bayangkan Senyum Bahagia Si Kecil</h3>
+                <p>Bayangkan senyum si kecil, kulit putih bersinar, sehat, dan bahagia. Bayangkan rasa bangga ketika orang-orang bilang, "Wah, kulit anaknya bagus sekali ya..."</p>
+                <p>Itu bukan lagi mimpi. Dengan Padedas, semua ibu bisa mewujudkannya.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section style="background-color: #f8f9fa;">
+        <div class="container">
+            <div class="section-title">
+                <h2>Keunggulan Padedas</h2>
+            </div>
+            <div class="features">
+                <div class="feature">
+                    <div class="feature-icon">✅</div>
+                    <h3>100% Herbal</h3>
+                    <p>Aman untuk kulit sensitif bayi</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Hasil Cepat</h3>
+                    <p>Terlihat dalam 2 minggu</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🔒</div>
+                    <h3>Efek Permanen</h3>
+                    <p>Hasil bertahan hingga bertahun-tahun</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">🚚</div>
+                    <h3>Pengiriman Cepat</h3>
+                    <p>Ke seluruh Indonesia</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta" id="order">
+        <div class="container">
+            <h2>Pesan Sekarang!</h2>
+            <p>Wujudkan Masa Depan Cerah untuk Buah Hati Anda</p>
+            
+            <div class="price">Rp 150.000</div>
+            
+            <div class="guarantee">Harga Spesial Hari Ini</div>
+            
+            <p>✅ 100% Herbal • ✅ Aman untuk bayi • ✅ Hasil cepat – hanya 2 minggu • ✅ Efek permanen</p>
+            
+            <p style="margin-top: 20px;"><strong>📦 Pengiriman cepat ke seluruh Indonesia</strong></p>
+            <p style="color: var(--accent); font-weight: 600;">⚡ Stok terbatas – jangan tunggu kehabisan!</p>
+            
+            <a href="https://wa.me/+6285337623560?text=Hai bunda saya mau pesan padedas" class="btn btn-accent" style="margin-top: 30px;">👉 Pesan Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="color: var(--white); margin-bottom: 20px;">Padedas</div>
+            <p>Kulit Bayi Putih, Sehat & Percaya Diri Sejak Dini</p>
+            <div class="copyright">
+                <p>© 2009 - 2025 Padedas - Pemutih Kulit Bayi Herbal. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox">
+        <span class="lightbox-close" onclick="closeLightbox()">&times;</span>
+        <img id="lightbox-img" src="" alt="Lightbox Image">
     </div>
-  </header>
 
-  <section class="hero">
-    <div class="container">
-      <span class="badge">✨ Formula 100% herbal</span>
-      <h1>Kulit Bayi Putih, Sehat & Percaya Diri Sejak Dini</h1>
-      <p>Formula 100% herbal – lembut untuk kulit bayi, cepat terlihat hasilnya dalam 2 minggu.</p>
-      <a href="https://wa.me/+6285337623560?text=Hai bunda saya mau pesan padedas" class="btn btn-accent">Pesan Sekarang</a>
-      <p style="margin-top:15px;font-weight:600;color:#555;">⭐ 4.8 dari 287 ulasan ibu di seluruh Indonesia</p>
-    </div>
-  </section>
+    <script>
+        // Inisialisasi slider
+        document.addEventListener('DOMContentLoaded', function() {
+            initSlider('productSlider', 'productDots');
+            initSlider('testimonialSlider', 'testimonialDots');
+            
+            // Auto slide untuk testimonial slider
+            setInterval(() => {
+                moveSlide('testimonialSlider', 1);
+            }, 5000);
+        });
 
-  <!-- (semua section lainnya dari file asli kamu tetap tanpa perubahan) -->
+        // Fungsi inisialisasi slider
+        function initSlider(sliderId, dotsId) {
+            const slider = document.getElementById(sliderId);
+            const slides = slider.querySelectorAll('.slide');
+            const dotsContainer = document.getElementById(dotsId);
+            
+            // Buat dots
+            slides.forEach((_, index) => {
+                const dot = document.createElement('div');
+                dot.classList.add('dot');
+                if (index === 0) dot.classList.add('active');
+                dot.addEventListener('click', () => {
+                    goToSlide(sliderId, index);
+                });
+                dotsContainer.appendChild(dot);
+            });
+            
+            // Set initial slide
+            slider.currentSlide = 0;
+        }
 
-  <footer>
-    <div class="container">
-      <div class="logo" style="color: var(--white); margin-bottom: 20px;">Padedas</div>
-      <p>Kulit Bayi Putih, Sehat & Percaya Diri Sejak Dini</p>
-      <div class="copyright">
-        <p>© 2009 - 2025 Padedas - Pemutih Kulit Bayi Herbal. All rights reserved.</p>
-      </div>
-    </div>
-  </footer>
+        // Fungsi untuk pindah slide
+        function moveSlide(sliderId, direction) {
+            const slider = document.getElementById(sliderId);
+            const slides = slider.querySelectorAll('.slide');
+            const dots = document.querySelectorAll(`#${sliderId.replace('Slider', 'Dots')} .dot`);
+            
+            slider.currentSlide += direction;
+            
+            if (slider.currentSlide >= slides.length) {
+                slider.currentSlide = 0;
+            } else if (slider.currentSlide < 0) {
+                slider.currentSlide = slides.length - 1;
+            }
+            
+            slider.style.transform = `translateX(-${slider.currentSlide * 100}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === slider.currentSlide);
+            });
+        }
 
-  <!-- Script JS original -->
-  <script>
-    // Semua script slider & lightbox tetap sama seperti di file asli kamu
-  </script>
+        // Fungsi untuk langsung ke slide tertentu
+        function goToSlide(sliderId, slideIndex) {
+            const slider = document.getElementById(sliderId);
+            const slides = slider.querySelectorAll('.slide');
+            const dots = document.querySelectorAll(`#${sliderId.replace('Slider', 'Dots')} .dot`);
+            
+            if (slideIndex >= 0 && slideIndex < slides.length) {
+                slider.currentSlide = slideIndex;
+                slider.style.transform = `translateX(-${slider.currentSlide * 100}%)`;
+                
+                // Update dots
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === slider.currentSlide);
+                });
+            }
+        }
+
+        // Fungsi untuk lightbox
+        function openLightbox(imgSrc) {
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+            
+            lightboxImg.src = imgSrc;
+            lightbox.style.display = 'flex';
+            document.body.style.overflow = 'hidden'; // Prevent scrolling
+        }
+
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.style.display = 'none';
+            document.body.style.overflow = 'auto'; // Re-enable scrolling
+        }
+
+        // Event listener untuk gambar di slider
+        document.querySelectorAll('.slide img').forEach(img => {
+            img.addEventListener('click', function() {
+                openLightbox(this.src);
+            });
+        });
+
+        // Tutup lightbox dengan klik di luar gambar
+        document.getElementById('lightbox').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeLightbox();
+            }
+        });
+
+        // Smooth scroll untuk navigasi
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if(targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if(targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Animasi fade in saat scroll
+        const fadeElements = document.querySelectorAll('.benefit-card, .testimonial, .feature');
+        
+        const fadeInOnScroll = () => {
+            fadeElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if(elementTop < window.innerHeight - elementVisible) {
+                    element.style.opacity = "1";
+                    element.style.transform = "translateY(0)";
+                }
+            });
+        };
+        
+        // Set initial state
+        fadeElements.forEach(element => {
+            element.style.opacity = "0";
+            element.style.transform = "translateY(20px)";
+            element.style.transition = "opacity 0.6s ease, transform 0.6s ease";
+        });
+        
+        window.addEventListener('scroll', fadeInOnScroll);
+        // Trigger once on load
+        window.addEventListener('load', fadeInOnScroll);
+    </script>
 </body>
 </html>
